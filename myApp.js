@@ -50,9 +50,11 @@ let app = express();
 
 // Chain Middleware to Create a Time Server
 app.get('/now', (req, res, next) => {
+    console.log('Middleware');
     req.time = new Date().toString();
     next();
 }, (req, res) => {
+    console.log('Handler');
     const timeObject = { time: req.time };
     res.json(timeObject);
 })
