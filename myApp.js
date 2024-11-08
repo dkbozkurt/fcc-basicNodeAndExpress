@@ -1,6 +1,7 @@
 require('dotenv').config();
 let express = require('express');
 let app = express();
+let bodyParser = require('body-parser');
 
 // console.log('Hello World');
 
@@ -68,21 +69,25 @@ let app = express();
 // })
 
 // Get Query Parameter Input from the Client
-app.get('/name', (req, res) => {
-    // const { first, last } = req.query;
-    // res.json({ "name": `${first} ${last}` });
+// app.get('/name', (req, res) => {
+//     // const { first, last } = req.query;
+//     // res.json({ "name": `${first} ${last}` });
 
-    // Second Way
-    // const firstName = req.query.first;
-    // const lastName = req.query.last;
-    // res.json({ "name": `${firstName} ${lastName}` });
+//     // Second Way
+//     // const firstName = req.query.first;
+//     // const lastName = req.query.last;
+//     // res.json({ "name": `${firstName} ${lastName}` });
 
-    //Third Way
-    const {first: firstName, last: lastName} = req.query;
-    res.json({"name" : `${firstName} ${lastName}`});
+//     //Third Way
+//     const {first: firstName, last: lastName} = req.query;
+//     res.json({"name" : `${firstName} ${lastName}`});
 
-})
+// })
 
+// Use body-parser to Parse POST Requests
+const data = bodyParser.urlencoded({ extended: false })
+app.use(data)
+app.use(bodyParser.json())
 
 
 
