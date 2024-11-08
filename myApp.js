@@ -31,16 +31,23 @@ let app = express();
 // })
 
 // Use the .env File
-let message = { "message": "Hello json" }
+// let message = { "message": "Hello json" }
 
-app.get('/json', (req, res) => {
-    if (process.env.MESSAGE_STYLE === 'uppercase') {
+// app.get('/json', (req, res) => {
+//     if (process.env.MESSAGE_STYLE === 'uppercase') {
 
-        message.message = message.message.toUpperCase();
-    }
+//         message.message = message.message.toUpperCase();
+//     }
 
-    res.json(message)
+//     res.json(message)
+// })
+
+// Implement a Root-Level Request Logger Middleware
+app.use((req, res, next) => {
+    console.log(req.method + ' ' + req.path + ' - ' + req.ip);
+    next();
 })
+
 
 
 
