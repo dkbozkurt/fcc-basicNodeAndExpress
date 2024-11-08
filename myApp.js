@@ -43,12 +43,19 @@ let app = express();
 // })
 
 // Implement a Root-Level Request Logger Middleware
-app.use((req, res, next) => {
-    console.log(req.method + ' ' + req.path + ' - ' + req.ip);
+// app.use((req, res, next) => {
+//     console.log(req.method + ' ' + req.path + ' - ' + req.ip);
+//     next();
+// })
+
+// Chain Middleware to Create a Time Server
+app.get('/now', (req, res, next) => {
+    req.time = new Date().toString();
     next();
+}, (req, res) => {
+    const timeObject = { time: req.time };
+    res.json(timeObject);
 })
-
-
 
 
 
