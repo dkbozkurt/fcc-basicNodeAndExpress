@@ -100,20 +100,14 @@ app.post('/name', (req, res) => {
 })
 
 
+// NOTES
+// POST (sometimes PUT) - Create a new resource using the information sent with the request,
 
+// GET - Read an existing resource without modifying it,
 
+// PUT or PATCH (sometimes POST) - Update a resource using the data sent,
 
-
-
-
-
-
-
-
-
-
-
-
+// DELETE - Delete a resource.
 
 
 
