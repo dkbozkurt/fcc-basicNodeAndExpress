@@ -60,13 +60,28 @@ let app = express();
 // })
 
 // Get Route Parameter Input from the Client
-app.get('/:word/echo', (req, res) => {
-    const word = req.params.word;
-    // const { word,echo } = req.params;
+// app.get('/:word/echo', (req, res) => {
+//     const word = req.params.word;
+//     // const { word,echo } = req.params;
 
-    res.json({ echo: word });
+//     res.json({ echo: word });
+// })
+
+// Get Query Parameter Input from the Client
+app.get('/name', (req, res) => {
+    // const { first, last } = req.query;
+    // res.json({ "name": `${first} ${last}` });
+
+    // Second Way
+    // const firstName = req.query.first;
+    // const lastName = req.query.last;
+    // res.json({ "name": `${firstName} ${lastName}` });
+
+    //Third Way
+    const {first: firstName, last: lastName} = req.query;
+    res.json({"name" : `${firstName} ${lastName}`});
+
 })
-
 
 
 
