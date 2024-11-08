@@ -1,7 +1,7 @@
 let express = require('express');
 let app = express();
 
-console.log('Hello World');
+// console.log('Hello World');
 
 // Start a Working Express Server
 // app.get('/',(req,res) =>
@@ -18,10 +18,16 @@ console.log('Hello World');
 // })
 
 // Serve Static Assets
-let targetFilePath = __dirname + '/public';
-app.use('/public', express.static(targetFilePath));
+// let targetFilePath = __dirname + '/public';
+// app.use('/public', express.static(targetFilePath));
 
+// Serve JSON on a Specific Route
+let message = {"message": "Hello json"}
 
+app.get('/json',(req,res)=>
+{
+    res.json(message)
+})
 
 
 
