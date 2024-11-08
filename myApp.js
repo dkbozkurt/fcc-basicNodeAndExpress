@@ -1,3 +1,4 @@
+require('dotenv').config();
 let express = require('express');
 let app = express();
 
@@ -22,10 +23,22 @@ let app = express();
 // app.use('/public', express.static(targetFilePath));
 
 // Serve JSON on a Specific Route
-let message = {"message": "Hello json"}
+// let message = {"message": "Hello json"}
 
-app.get('/json',(req,res)=>
-{
+// app.get('/json',(req,res)=>
+// {
+//     res.json(message)
+// })
+
+// Use the .env File
+let message = { "message": "Hello json" }
+
+app.get('/json', (req, res) => {
+    if (process.env.MESSAGE_STYLE === 'uppercase') {
+
+        message.message = message.message.toUpperCase();
+    }
+
     res.json(message)
 })
 
