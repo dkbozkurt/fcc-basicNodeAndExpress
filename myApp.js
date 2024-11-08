@@ -49,16 +49,23 @@ let app = express();
 // })
 
 // Chain Middleware to Create a Time Server
-app.get('/now', (req, res, next) => {
-    console.log('Middleware');
-    req.time = new Date().toString();
-    next();
-}, (req, res) => {
-    console.log('Handler');
-    const timeObject = { time: req.time };
-    res.json(timeObject);
-})
+// app.get('/now', (req, res, next) => {
+//     console.log('Middleware');
+//     req.time = new Date().toString();
+//     next();
+// }, (req, res) => {
+//     console.log('Handler');
+//     const timeObject = { time: req.time };
+//     res.json(timeObject);
+// })
 
+// Get Route Parameter Input from the Client
+app.get('/:word/echo', (req, res) => {
+    const word = req.params.word;
+    // const { word,echo } = req.params;
+
+    res.json({ echo: word });
+})
 
 
 
