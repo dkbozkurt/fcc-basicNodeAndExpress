@@ -10,13 +10,16 @@ console.log('Hello World');
 // })
 
 // Serve an HTML File
-let targetFilePath = __dirname + '/views/index.html';
+// let targetFilePath = __dirname + '/views/index.html';
 
-app.get('/',(req,res) =>
-{
-    res.sendFile(targetFilePath);
-})
+// app.get('/',(req,res) =>
+// {
+//     res.sendFile(targetFilePath);
+// })
 
+// Serve Static Assets
+let targetFilePath = __dirname + '/public';
+app.use('/public', express.static(targetFilePath));
 
 
 
