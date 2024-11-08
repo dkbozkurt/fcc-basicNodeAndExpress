@@ -85,12 +85,19 @@ let bodyParser = require('body-parser');
 // })
 
 // Use body-parser to Parse POST Requests
+// const data = bodyParser.urlencoded({ extended: false })
+// app.use(data)
+// app.use(bodyParser.json())
+
+// Get Data from POST Requests
 const data = bodyParser.urlencoded({ extended: false })
 app.use(data)
 app.use(bodyParser.json())
 
-
-
+app.post('/name', (req, res) => {
+    const { first: firstName, last: lastName } = req.body;
+    res.json({ name: `${firstName} ${lastName}` });
+})
 
 
 
